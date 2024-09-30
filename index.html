@@ -3,9 +3,67 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+
 	<title>CSCI 495</title>
 </head>
 <body>
-	Hello World!
+	
+	<!-- Top Navigation -->
+	<div class="topnav">
+
+		<!-- Left-hand side: Site Name -->
+		<div class="left">
+			Genetic Data Extractor
+		</div>
+
+		<!-- Right-hand side: Links -->
+		<div class="right">
+			<a class="active" href="">Tool</a>
+			<a href="">User Guide</a>
+			<a href="">About</a>
+		</div>
+
+	</div>
+
+	<!-- Main Page -->
+	<div class="container">
+
+		<h1>Data Extraction Tool</h1>
+		<p>Enter the following information below, and we will provide the classification history.</p>
+
+		<!-- Progress bar (1 2 3 steps) -->
+		<div class="progress">
+
+		</div>
+
+		<!-- Text Input Fields Container -->
+		<div class="inputs">
+			<label for="gene">Gene Name</label>
+			<input type="text" name="gene" id="gene">
+			
+			<label for="change">DNA Change</label>
+			<input type="text" name="change" id="change">
+			
+			<label for="protien">Protien Change</label>
+			<input type="text" name="protien" id="protien">
+			
+			<label for="classific">Classification</label>
+			<input type="text" name="classific" id="classific">
+			
+			<label for="lab">Lab</label>
+			<input type="text" name="lab" id="lab">
+			
+			<label for="year">Year</label>
+			<input type="text" name="year" id="year">
+
+		</div>
+
+		<!-- Step Seek Buttons -->
+		<button class="previous">Previous</button>
+		<button class="next">Next</button>
+	</div>
+
 </body>
+<script src="script.js"></script>
 </html>

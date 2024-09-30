@@ -1,0 +1,71 @@
+body{
+	/* Pretty font */
+	font-family: Arial, Helvetica, sans-serif;
+
+	/* Removes document edge */
+	margin:0;
+}
+
+
+/* Top Navigation */
+.topnav {
+	/* Colors */
+	background-color: #32436f;
+	color:white;
+
+	/* Spacing */
+	display:flex;
+	justify-content: space-between;
+	padding: 30px;
+	align-items:center;
+
+	/* Text Size */
+	font-size: 18px;
+
+	/* All uppercase */
+	text-transform: uppercase;
+}
+
+.topnav a {
+	/* Remove the default link attributes */
+	text-decoration: none; 
+	color:unset;
+
+	/* Individual Spacing */
+	padding: 10px;
+	margin: 0px 5px 0px 5px;
+
+	/* Transition for hover */
+	transition: ease-in-out 0.3s;
+
+	/* rounded edges */
+	border-radius: 7px;
+}
+
+.topnav a:hover, .topnav .active {
+	background-color: white;
+	color: #32436f;
+}
+
+.topnav .left {
+
+	/* Bold so it stands out */
+	font-weight: 600;
+
+	/* Spaced out from the edge */
+	margin: 0px 10px 0px 10px;
+}
+
+.topnav .right {
+	/* Spacing out each link */
+	display:flex;
+	justify-content:space-around;
+	/* width: 55%; */
+
+	/* Spaced out from the edge */
+	margin: 0px 10px 0px 10px;
+
+	align-items:center;
+}
+
+/* ============================ */
