@@ -1,9 +1,17 @@
 body{
 	/* Pretty font */
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Helvetica, sans-serif;
 
 	/* Removes document edge */
 	margin:0;
+
+	background-color: #edf0f1;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	overflow-x: hidden;
 }
 
 
@@ -19,11 +27,12 @@ body{
 	padding: 30px;
 	align-items:center;
 
-	/* Text Size */
+	/* Text */
 	font-size: 18px;
-
-	/* All uppercase */
 	text-transform: uppercase;
+	font-family: 'raleway';
+
+	width:100%;
 }
 
 .topnav a {
@@ -32,14 +41,14 @@ body{
 	color:unset;
 
 	/* Individual Spacing */
-	padding: 10px;
+	padding: 10px 15px 10px 15px;
 	margin: 0px 5px 0px 5px;
 
 	/* Transition for hover */
 	transition: ease-in-out 0.3s;
 
 	/* rounded edges */
-	border-radius: 7px;
+	border-radius: 30px;
 }
 
 .topnav a:hover, .topnav .active {
@@ -123,6 +132,13 @@ input[type=text] {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
+	background-color: white;
+	width: max-content;
+	height: 100%;
+
+	/* Spacing */
+	padding: 40px 30px 120px 30px;
 }
 
 p {
@@ -171,6 +187,12 @@ button:hover {
 
 h1 {
 	color: #007a74;
+
+	/* Text */
+	font-family: 'raleway';
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 1px;
 }
 
 label {
