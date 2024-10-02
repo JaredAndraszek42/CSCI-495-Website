@@ -10,7 +10,7 @@ body{
 /* Top Navigation */
 .topnav {
 	/* Colors */
-	background-color: #32436f;
+	background-color: #164360;
 	color:white;
 
 	/* Spacing */
@@ -43,8 +43,8 @@ body{
 }
 
 .topnav a:hover, .topnav .active {
-	background-color: white;
-	color: #32436f;
+	background-color: #007a74;
+	color: #ffffff;
 }
 
 .topnav .left {
@@ -69,3 +69,125 @@ body{
 }
 
 /* ============================ */
+
+/* Text Field Inputs */
+.inputs{
+	/* Displays the columns side-by-side */
+	display:flex;
+	flex-direction: row;
+	justify-content: center;
+
+	/* Spacing */
+	margin-bottom:40px;
+}
+
+.inputs .column {
+	/* Splits the input boxes into columns */
+	display: flex;
+	flex-direction: column;
+
+	/* Spaces out the columns */
+	padding: 20px;
+}
+
+/* Groups the label + input */
+.input-field{
+	/* Puts the label above the input */
+	display: flex;
+	flex-direction: column;
+
+	/* Spaces out the input fields */
+	margin: 10px;
+}
+
+input[type=text] {
+	/* Spaceing */
+	margin-top: 5px;
+	padding: 5px;
+
+	/* Remove outline */
+	outline:none;
+
+	/* Transition for hover */
+	transition: 0.2s ease-in-out;
+
+	/* Text */
+	font-size: 18px;
+}
+
+/* ======== */
+
+
+.container{
+	/* Center page items */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+p {
+	text-align: center;
+}
+
+/* ============ */
+
+/* Buttons */
+
+button{
+	/* Colors */
+	border:none;
+	background-color: #274559;
+	color:white;
+
+	/* Text Alteration */
+	font-size: 16px;
+
+	/* Spacing */
+	padding:15px 25px 15px 25px;
+
+	/* Hover transition */
+	transition: 0.2s ease-in-out;
+}
+
+button:hover {
+	background-color: white;
+	color: #274559;
+}
+
+.download{
+	background-color: #6D89B1;
+	color:white;
+}
+
+.download:hover {
+	background-color: #ADC2E1;
+	color:white;
+}
+
+/* ======== */
+
+
+/* Main Page Coloring */
+
+h1 {
+	color: #007a74;
+}
+
+label {
+	color: #8ab1b4;
+}
+
+input[type=text] {
+	border: 2px solid #8ab1b4;
+	color:#007a74;
+}
+
+input[type=text]:focus {
+	border: 2px solid #2e5f95;
+	color: #2e5f95;
+}
+
+
+p {
+	color:#2e5f95;
+}

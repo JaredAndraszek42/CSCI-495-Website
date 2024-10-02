@@ -30,7 +30,10 @@
 	<div class="container">
 
 		<h1>Data Extraction Tool</h1>
-		<p>Enter the following information below, and we will provide the classification history.</p>
+		<p>Enter the following information below, and we will provide the classification history.
+			<br>
+			Your search results will be exported to a .csv file for you to download.
+		</p>
 
 		<!-- Progress bar (1 2 3 steps) -->
 		<div class="progress">
@@ -39,29 +42,50 @@
 
 		<!-- Text Input Fields Container -->
 		<div class="inputs">
-			<label for="gene">Gene Name</label>
-			<input type="text" name="gene" id="gene">
-			
-			<label for="change">DNA Change</label>
-			<input type="text" name="change" id="change">
-			
-			<label for="protien">Protien Change</label>
-			<input type="text" name="protien" id="protien">
-			
-			<label for="classific">Classification</label>
-			<input type="text" name="classific" id="classific">
-			
-			<label for="lab">Lab</label>
-			<input type="text" name="lab" id="lab">
-			
-			<label for="year">Year</label>
-			<input type="text" name="year" id="year">
+
+			<div class="column">
+
+				<div class="input-field">
+					<label for="gene">Gene Name</label>
+					<input type="text" name="gene" id="gene">
+				</div>
+
+				<div class="input-field">
+					<label for="change">DNA Change</label>
+					<input type="text" name="change" id="change">
+				</div>
+				
+				<div class="input-field">
+					<label for="protien">Protien Change</label>
+					<input type="text" name="protien" id="protien">
+				</div>
+
+			</div>
+
+			<div class="column">
+
+				<div class="input-field">
+					<label for="classific">Classification</label>
+					<input type="text" name="classific" id="classific">
+				</div>
+
+				<div class="input-field">
+					<label for="lab">Lab</label>
+					<input type="text" name="lab" id="lab">
+				</div>
+				
+				<div class="input-field">
+					<label for="year">Year</label>
+					<input type="text" name="year" id="year">
+				</div>
+
+			</div>
+
 
 		</div>
 
-		<!-- Step Seek Buttons -->
-		<button class="previous">Previous</button>
-		<button class="next">Next</button>
+		<!-- Download Buttons-->
+		<button class="download">Download</button>
 	</div>
 
 </body>
