@@ -112,7 +112,7 @@ body{
 input[type=text] {
 	/* Spaceing */
 	margin-top: 5px;
-	padding: 5px;
+	padding: 10px;
 
 	/* Remove outline */
 	outline:none;
@@ -201,12 +201,12 @@ label {
 
 input[type=text] {
 	border: 2px solid #8ab1b4;
-	color:#007a74;
+	color:#0c8e87;
 }
 
 input[type=text]:focus {
-	border: 2px solid #2e5f95;
-	color: #2e5f95;
+	border: 2px solid #35669a;
+	color: #36689e;
 }
 
 
