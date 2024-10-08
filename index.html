@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="/stylesheets/style.css">
 
 	<!-- Pretty font import -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,10 +42,9 @@
 		</p>
 
 		<!-- Text Input Fields Container -->
+		<form id="downloadForm" method="POST" action="/phpScripts/downloadFiles.php">
 		<div class="inputs">
-
 			<div class="column">
-
 				<div class="input-field">
 					<label for="gene">Gene Name</label>
 					<input type="text" name="gene" id="gene">
@@ -86,9 +85,9 @@
 		</div>
 
 		<!-- Download Buttons-->
-		<button class="download">Download</button>
+		<button class="download" form="downloadForm">Download</button>
+		</form>
 	</div>
-
 </body>
-<script src="script.js"></script>
+<script src="/scripts/script.js"></script>
 </html>

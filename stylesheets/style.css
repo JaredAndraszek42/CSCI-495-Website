@@ -1,0 +1,261 @@
+body{
+	/* Pretty font */
+	font-family: Helvetica, sans-serif;
+
+	/* Removes document edge */
+	margin:0;
+
+	background-color: #edf0f1;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	/* overflow-x: hidden; */
+}
+
+
+/* Top Navigation */
+.topnav {
+	/* Colors */
+	background-color: #164360;
+	color:white;
+
+	/* Spacing */
+	display:flex;
+	justify-content: space-between;
+	padding: 30px 0px 30px 0px;
+	align-items:center;
+
+	/* Text */
+	font-size: 18px;
+	text-transform: uppercase;
+	font-family: 'raleway';
+
+	width:100%;
+}
+
+.topnav a {
+	/* Remove the default link attributes */
+	text-decoration: none; 
+	color:unset;
+	text-align: center;
+
+	/* Individual Spacing */
+	padding: 10px 15px 10px 15px;
+	margin: 0px 5px 0px 5px;
+
+	/* Transition for hover */
+	transition: ease-in-out 0.3s;
+
+	/* rounded edges */
+	border-radius: 30px;
+}
+
+.topnav a:hover, .topnav .active {
+	background-color: #007a74;
+	color: #ffffff;
+}
+
+.topnav .left {
+
+	/* Bold so it stands out */
+	font-weight: 600;
+
+	/* Spaced out from the edge */
+	margin: 0px 10px 0px 10px;
+}
+
+.topnav .right {
+	/* Spacing out each link */
+	display:flex;
+	justify-content:space-around;
+	/* width: 55%; */
+
+	/* Spaced out from the edge */
+	margin: 0px 10px 0px 10px;
+
+	align-items:center;
+}
+
+/* ============================ */
+
+/* Text Field Inputs */
+.inputs{
+	/* Displays the columns side-by-side */
+	display:flex;
+	flex-direction: row;
+	justify-content: center;
+
+	/* Spacing */
+	margin-bottom:40px;
+}
+
+.inputs .column {
+	/* Splits the input boxes into columns */
+	display: flex;
+	flex-direction: column;
+
+	/* Spaces out the columns */
+	padding: 20px;
+}
+
+/* Groups the label + input */
+.input-field{
+	/* Puts the label above the input */
+	display: flex;
+	flex-direction: column;
+
+	/* Spaces out the input fields */
+	margin: 10px;
+}
+
+input[type=text] {
+	/* Spaceing */
+	margin-top: 5px;
+	padding: 10px;
+
+	/* Remove outline */
+	outline:none;
+
+	/* Transition for hover */
+	transition: 0.2s ease-in-out;
+
+	/* Text */
+	font-size: 18px;
+}
+
+/* ======== */
+
+
+.container{
+	/* Center page items */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	background-color: white;
+	width: max-content;
+	height: 100%;
+
+	/* Spacing */
+	padding: 40px 30px 120px 30px;
+}
+
+p {
+	text-align: center;
+}
+
+/* ============ */
+
+/* Buttons */
+
+button{
+	/* Colors */
+	border:none;
+	background-color: #274559;
+	color:white;
+
+	/* Text Alteration */
+	font-size: 16px;
+
+	/* Spacing */
+	padding:15px 25px 15px 25px;
+
+	/* Hover transition */
+	transition: 0.2s ease-in-out;
+}
+
+button:hover {
+	background-color: white;
+	color: #274559;
+}
+
+.download{
+	background-color: #6D89B1;
+	color:white;
+}
+
+.download:hover {
+	background-color: #ADC2E1;
+	color:white;
+}
+
+/* ======== */
+
+
+/* Main Page Coloring */
+
+h1 {
+	color: #007a74;
+
+	/* Text */
+	font-family: 'raleway';
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+label {
+	color: #8ab1b4;
+}
+
+input[type=text] {
+	border: 2px solid #8ab1b4;
+	color:#0c8e87;
+}
+
+input[type=text]:focus {
+	border: 2px solid #35669a;
+	color: #36689e;
+}
+
+
+p {
+	color:#2e5f95;
+}
+
+
+
+/* Screen Compatibility */
+@media screen and (max-width: 700px) {
+
+	.topnav{
+		zoom: 95%;
+		
+	}
+	.container{
+		width:100%;
+		padding-left: 0px;
+		padding-right:0px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.topnav{
+		zoom: 85%;
+		
+	}
+
+	.inputs{
+		flex-direction: column;
+	}
+
+	p{
+		width: 400px;
+	}
+}
+
+@media screen and (max-width: 440px) {
+	.topnav{
+		zoom: 75%;
+	}
+
+	p{
+		width: 300px;
+	}
+
+	h1{
+		font-size: 24px;
+	}
+}
