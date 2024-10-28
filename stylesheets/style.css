@@ -123,6 +123,27 @@ input[type=text] {
 
 	/* Text */
 	font-size: 18px;
+
+	/* Keep hidden initially */
+	display: none;
+}
+
+input[type=checkbox] {
+	margin-top: 10px;
+	width: 18px;
+	height: 18px;
+	transition: 0.2s ease-in-out;
+}
+
+.styled-checkbox{
+	accent-color: #007a74;
+}
+
+
+.input-toggle{
+	display: flex;
+	flex-direction: row;
+	width: 289px;
 }
 
 /* ======== */
@@ -171,15 +192,26 @@ button:hover {
 	color: #274559;
 }
 
-.download{
+.pageButton{
 	background-color: #6D89B1;
 	color:white;
 }
 
-.download:hover {
+.pageButton:hover {
 	background-color: #ADC2E1;
 	color:white;
 }
+
+.download{
+	background-color: #007a74;
+	color:white;
+}
+
+.download:hover {
+	background-color: #50a5a0;
+	color:white;
+}
+
 
 /* ======== */
 

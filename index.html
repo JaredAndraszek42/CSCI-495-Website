@@ -45,38 +45,53 @@
 		<form id="downloadForm" method="POST" action="/phpScripts/downloadFiles.php">
 		<div class="inputs">
 			<div class="column">
-				<div class="input-field">
-					<label for="gene">Gene Name</label>
-					<input type="text" name="gene" id="gene">
+
+				<div class="input-toggle">
+					<input onclick="reveal('gene')" type="checkbox" class="styled-checkbox">
+					<div class="input-field">
+						<label for="gene">Gene Name</label>
+						<input type="text" name="gene" id="gene">
+					</div>
 				</div>
 
-				<div class="input-field">
-					<label for="change">DNA Change</label>
-					<input type="text" name="change" id="change">
-				</div>
-				
-				<div class="input-field">
-					<label for="protein">Protein Change</label>
-					<input type="text" name="protein" id="protien">
+				<div class="input-toggle">
+					<input onclick="reveal('dna')" type="checkbox" class="styled-checkbox">
+					<div class="input-field">
+						<label for="dna">DNA Change</label>
+						<input type="text" name="dna" id="dna">
+					</div>
 				</div>
 
-			</div>
-
-			<div class="column">
-
-				<div class="input-field">
-					<label for="classific">Classification</label>
-					<input type="text" name="classific" id="classific">
+				<div class="input-toggle">
+					<input onclick="reveal('protien')" type="checkbox" class="styled-checkbox">
+					<div class="input-field">
+						<label for="protien">Protein Change</label>
+						<input type="text" name="protien" id="protien">
+					</div>
 				</div>
 
-				<div class="input-field">
-					<label for="lab">Lab</label>
-					<input type="text" name="lab" id="lab">
+				<div class="input-toggle">
+					<input onclick="reveal('classific')" type="checkbox" class="styled-checkbox">
+					<div class="input-field">
+						<label for="classific">Classification</label>
+						<input type="text" name="classific" id="classific">
+					</div>
 				</div>
-				
-				<div class="input-field">
-					<label for="year">Year</label>
-					<input type="text" name="year" id="year">
+
+				<div class="input-toggle">
+					<input onclick="reveal('lab')" type="checkbox" class="styled-checkbox">
+					<div class="input-field">
+						<label for="lab">Lab</label>
+						<input type="text" name="lab" id="lab">
+					</div>
+				</div>
+
+				<div class="input-toggle">
+					<input onclick="reveal('year')" type="checkbox" class="styled-checkbox">
+					<div class="input-field">
+						<label for="year">Year</label>
+						<input type="text" name="year" id="year">
+					</div>
 				</div>
 
 			</div>
@@ -84,10 +99,10 @@
 
 		</div>
 
-		<!-- Download Buttons-->
-		<button class="download" form="downloadForm">Download</button>
+		<!-- Download Button-->
+		<button style="display:none;" class="download" form="downloadForm">Download</button>
 		</form>
 	</div>
 </body>
-<script src="/scripts/script.js"></script>
+<script src="scripts/script.js"></script>
 </html>
