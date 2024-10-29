@@ -156,7 +156,12 @@ input[type=checkbox] {
 	font-size: 12px;
 	margin: 5px 0px 5px 0px;
 
-	color:#984444;
+	color:#984464;
+}
+
+.pageError{
+	font-size: 14px;
+	margin: 15px 0px 15px 0px;
 }
 
 /* ======== */
@@ -184,7 +189,7 @@ p {
 
 /* Buttons */
 
-button{
+.button, button{
 	/* Colors */
 	border:none;
 	background-color: #274559;
@@ -198,9 +203,13 @@ button{
 
 	/* Hover transition */
 	transition: 0.2s ease-in-out;
-}
 
-button:hover {
+	/* Prevent button text selection */
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
+}
+.button:hover, button:hover {
 	background-color: white;
 	color: #274559;
 }
