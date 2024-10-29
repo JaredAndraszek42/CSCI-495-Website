@@ -115,6 +115,8 @@ input[type=text] {
 	margin-top: 5px;
 	padding: 10px;
 
+	width: 180px;
+
 	/* Remove outline */
 	outline:none;
 
@@ -129,7 +131,6 @@ input[type=text] {
 }
 
 input[type=checkbox] {
-	margin-top: 10px;
 	width: 18px;
 	height: 18px;
 	transition: 0.2s ease-in-out;
@@ -143,7 +144,19 @@ input[type=checkbox] {
 .input-toggle{
 	display: flex;
 	flex-direction: row;
-	width: 289px;
+	align-items: center;
+	width: 250px;
+	height: 88px;
+}
+
+.error {
+	display: none;
+
+	text-align: left;
+	font-size: 12px;
+	margin: 5px 0px 5px 0px;
+
+	color:#984444;
 }
 
 /* ======== */
