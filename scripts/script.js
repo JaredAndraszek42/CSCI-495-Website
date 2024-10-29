@@ -17,6 +17,8 @@ function reveal(fieldId) {
 	}
 }
 
+let pageError = document.getElementById('pageError');
+
 let inputNames = ["gene", "dna", "protein", "classific", "lab", "year"];
 
 let textInputs = [];
@@ -65,6 +67,24 @@ function getUserInput() {
 	return userInputs;
 }
 
+function displayInputError(index){
+	let errorLabel = errorLabels[index];
+	let inputBox = textInputs[index];
+
+	errorLabel.style.display = "block";
+
+	inputBox.style.borderColor = "#984464";
+}
+
+function hideAllErrorLabels() {
+	for (let i = 0; i < errorLabels.length; i++) {
+		const x = errorLabels[i];
+		const y = textInputs[i];
+		x.style.display = "none";
+		y.style.borderColor = "#8ab1b4";
+	}
+}
+
 /**
  * Receives error type and displays it to the corresponding input field
  * 
@@ -94,9 +114,11 @@ function handleError(inputName, errorType) {
 			message += "   Input Field:   " + inputName + "\n";
 			break;
 	}
+
+	displayInputError(inputNames.indexOf(inputName))
+
 	console.log(" [ ErrorHandler ] " + message);
 }
-
 
 function emptyCheck(string) {
 	if (string.trim() == "" || string.length == 0) {
@@ -110,13 +132,13 @@ function specialCheck(string, char) {
 	else { return true; }
 }
 
-function validateInput() {
+function validateAllInput() {
+
+	hideAllErrorLabels();
 
 	let errorsFound = false;
 
 	let userInputs = getUserInput();
-
-	// console.table(userInputs);
 
 	for (let i = 0; i < userInputs.length; i++) {
 		const x = userInputs[i][0];
@@ -131,8 +153,10 @@ function validateInput() {
 
 	if (errorsFound) {
 		console.log(" [ Validator ] Input failed validation");
-	}else {
+		pageError.style.display = "block";
+	} else {
 		console.log(" [ Validator ] Input passed validation");
+		pageError.style.display = "none";
 
 	}
 	
