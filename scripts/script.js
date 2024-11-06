@@ -1,3 +1,4 @@
+document.getElementById("backButton").style.display = "none"
 
 /** 
  * reveals the text input field whenever the 
@@ -20,6 +21,10 @@ function reveal(fieldId) {
 let pageError = document.getElementById('pageError');
 
 let inputNames = ["gene", "dna", "protein", "classific", "lab", "year"];
+
+let formalNames = ["Gene Name", "DNA Change", "Protien Change", "Classification", "Lab", "Year"]
+
+let displays = ["gendis", "dnadis", "prodis", "cladis", "labdis", "yeadis"]
 
 let textInputs = [];
 let inputLabels = [];
@@ -67,12 +72,18 @@ function getUserInput() {
 	return userInputs;
 }
 
-function displayInputError(index){
+function displayInputError(inputName, message){
+	let index = inputNames.indexOf(inputName)
 	let errorLabel = errorLabels[index];
 	let inputBox = textInputs[index];
 
+	// Reveal label
 	errorLabel.style.display = "block";
 
+	// Update message
+	errorLabel.innerText = message;
+
+	// Set to red
 	inputBox.style.borderColor = "#984464";
 }
 
@@ -95,19 +106,23 @@ function hideAllErrorLabels() {
  */
 function handleError(inputName, errorType) {
 
+	let formalName = formalNames[inputNames.indexOf(inputName)]
+
 	let message = "";
 
 	switch (errorType) {
 		case "empty":
-			message += "Empty value at " + inputName;
+			message += formalName + " should not be empty";
 			message += "\n";
 			break;
 		case "nan":
-			message += inputName + " is not a number";
+			message += formalName + " has to be a number";
 			break;
 		case "specialChar":
-			message += inputName +" has special characters";
+			message += formalName + " should not have a special character";
 			break;
+		case "none":
+
 		default:
 			message += "Unable to handle error.\n";
 			message += "   Error Type:    " + errorType + "\n";
@@ -115,9 +130,29 @@ function handleError(inputName, errorType) {
 			break;
 	}
 
-	displayInputError(inputNames.indexOf(inputName))
+	if (inputName != "none") {
+		displayInputError(inputName, message)
 
-	console.log(" [ ErrorHandler ] " + message);
+	}
+
+}
+
+function checkBoxCheck() {
+	let count = 0
+	for (let i = 0; i < checkBoxes.length; i++) {
+		const box = checkBoxes[i];
+		
+		let x = box.checked;
+
+		if (x) {count++}
+	}
+
+	if(count == 0) {
+		return false
+	}
+	else {
+		return true
+	}
 }
 
 function emptyCheck(string) {
@@ -130,6 +165,16 @@ function emptyCheck(string) {
 function specialCheck(string, char) {
 	if (string.includes(char)) { return false;	} 
 	else { return true; }
+}
+
+function displayUserInputs(userInputs) {
+	for (let i = 0; i < userInputs.length; i++) {
+		const x = userInputs[i][1];
+		const y = document.getElementById(displays[i]);
+
+		y.innerText = x;
+		
+	}
 }
 
 function validateAllInput() {
@@ -151,13 +196,63 @@ function validateAllInput() {
 		}
 	}
 
+	if (checkBoxCheck() == false) {
+		handleError("none", "none")
+		errorsFound = true;
+	}
+
 	if (errorsFound) {
-		console.log(" [ Validator ] Input failed validation");
 		pageError.style.display = "block";
+		
 	} else {
-		console.log(" [ Validator ] Input passed validation");
 		pageError.style.display = "none";
+		nextPage()
+		displayUserInputs(userInputs)
 
 	}
 	
 }
+let inputPage = document.getElementById("inputPage")
+let resultsPage = document.getElementById("resultsPage")
+let backButton = document.getElementById("backButton")
+let nextButton = document.getElementById("nextButton")
+
+function nextPage() {
+	inputPage.style.display = "none"
+	resultsPage.style.display = "flex"
+
+	backButton.style.display = "flex"
+	
+	nextButton.style.display = "none"
+	
+	createDownloadButton()
+}
+
+function back(){
+	inputPage.style.display = "flex"
+	resultsPage.style.display = "none"
+
+	nextButton.style.display = "flex"
+	backButton.style.display = "none"
+	
+	deleteDownloadButton()
+}
+
+
+
+function createDownloadButton() {
+	let container = document.getElementById("button-container")
+	
+	let button = document.createElement("div");
+	button.className = "button download";
+	button.id = "downloadButton";
+	button.innerText = "Download"
+
+	container.appendChild(button)
+}
+
+function deleteDownloadButton() {
+	document.getElementById("downloadButton").remove()
+}
+
+

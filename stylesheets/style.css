@@ -14,6 +14,13 @@ body{
 	/* overflow-x: hidden; */
 }
 
+#button-container{
+	display:flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 210px;
+}
+
 
 /* Top Navigation */
 .topnav {
@@ -80,6 +87,19 @@ body{
 
 /* ============================ */
 
+#resultsPage{
+	display:none;
+	flex-direction: column;
+}
+
+#resultsPage p {
+	text-align: left;
+}
+#resultsPage p p {
+	text-align: left;
+	font-weight: bold;
+}
+
 /* Text Field Inputs */
 .inputs{
 	/* Displays the columns side-by-side */
@@ -97,7 +117,7 @@ body{
 	flex-direction: column;
 
 	/* Spaces out the columns */
-	padding: 20px;
+	padding: 0px 20px 0px 20px;
 }
 
 /* Groups the label + input */
@@ -321,4 +341,5 @@ p {
 	display: flex;
     flex-direction: column;
     align-items: center;
+	margin: 40px 0px 40px 0px;
 }
