@@ -1,25 +1,3 @@
-document.getElementById("backButton").style.display = "none"
-
-/** 
- * reveals the text input field whenever the 
- * check box is toggled
- * */ 
-function reveal(fieldId) {
-	let thisField = document.getElementById(fieldId);
-	
-	if (thisField.style.display != "block"){
-		thisField.style.display = "block";
-	} else {
-		thisField.style.display = "none";
-
-		// clear input text on deselection
-		thisField.value = "";
-		thisField.innerText = "";
-	}
-}
-
-let pageError = document.getElementById('pageError');
-
 let inputNames = ["gene", "dna", "protein", "classific", "lab", "year"];
 
 let formalNames = ["Gene Name", "DNA Change", "Protien Change", "Classification", "Lab", "Year"]
@@ -54,7 +32,6 @@ function populateInputDOM() {
 
 	}
 }
-
 populateInputDOM();
 
 function getUserInput() {
@@ -87,13 +64,11 @@ function displayInputError(inputName, message){
 	inputBox.style.borderColor = "#984464";
 }
 
-function hideAllErrorLabels() {
-	for (let i = 0; i < errorLabels.length; i++) {
-		const x = errorLabels[i];
-		const y = textInputs[i];
-		x.style.display = "none";
-		y.style.borderColor = "#8ab1b4";
-	}
+function hideErrorLabels(index) {
+	const x = errorLabels[index];
+	const y = textInputs[index];
+	x.style.display = "none";
+	y.style.borderColor = "#8ab1b4";
 }
 
 /**
@@ -116,17 +91,26 @@ function handleError(inputName, errorType) {
 			message += "\n";
 			break;
 		case "nan":
-			message += formalName + " has to be a number";
+			message += formalName + " must be a number";
 			break;
-		case "specialChar":
+		case "special":
 			message += formalName + " should not have a special character";
 			break;
+		case "dna":
+			message += formalName + " should be in this format: c.181T";
+			break;
+		case "protien":
+			message += formalName + " should be in this format: p.Cys64Gly";
+			break;
 		case "none":
-
 		default:
-			message += "Unable to handle error.\n";
-			message += "   Error Type:    " + errorType + "\n";
-			message += "   Input Field:   " + inputName + "\n";
+
+			message += "Validation error"
+
+			console.log("Unable to handle error.\n" + 
+				"   Error Type:    " + errorType + "\n" +
+				"   Input Field:   " + inputName + "\n"
+			)
 			break;
 	}
 
@@ -162,10 +146,38 @@ function emptyCheck(string) {
 	else { return true; }
 }
 
-function specialCheck(string, char) {
-	if (string.includes(char)) { return false;	} 
-	else { return true; }
+function specialCheck(string) {
+	const specialCharRegex = /[~`!@#$%^&*()_\-+=|\\}\]{\["':;?/><,]/;
+	if (!specialCharRegex.test(string)) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
+
+function numberCheck(string) {
+	if (string.trim().length === 0)
+		return false;
+	return !isNaN(string);
+}
+
+function dnaCheck(string) {
+	let begin = string[0] + string[1];
+
+	if (begin != "c.") {
+		return false
+	} else{ return true}
+}
+
+function protienCheck(string) {
+	let begin = string[0] + string[1];
+
+	if (begin != "p.") {
+		return false
+	} else{ return true}
+}
+
 
 function displayUserInputs(userInputs) {
 	for (let i = 0; i < userInputs.length; i++) {
@@ -177,82 +189,80 @@ function displayUserInputs(userInputs) {
 	}
 }
 
+
 function validateAllInput() {
 
-	hideAllErrorLabels();
+	// Reset all labels
+	for (let i = 0; i < errorLabels.length; i++) {
+		hideErrorLabels(i);
+	}
 
 	let errorsFound = false;
 
 	let userInputs = getUserInput();
 
-	for (let i = 0; i < userInputs.length; i++) {
-		const x = userInputs[i][0];
-		const y = userInputs[i][1];
-		
-		if (x && emptyCheck(y) == false) {
-
-			handleError(inputNames[i], "empty")
-			errorsFound = true;
-		}
-	}
-
 	if (checkBoxCheck() == false) {
 		handleError("none", "none")
 		errorsFound = true;
+	} 
+	
+	else {
+
+		for (let i = 0; i < userInputs.length; i++) {
+			const x = userInputs[i][0];
+			const y = userInputs[i][1];
+	
+			// if this check box TRUE
+			if (x) {
+	
+				// Failed Empty Check: Value was empty
+				if (emptyCheck(y) == false) {
+		
+					handleError(inputNames[i], "empty")
+					errorsFound = true;
+				}
+		
+				// Failed Numeric Year: Year was not a number
+				else if (i == 5 && numberCheck(y) == false) {
+					handleError(inputNames[i], "nan");
+					errorsFound = true;
+				}
+
+				// Failed DNA Change: DNA change was not in the format c.181T
+				else if (i == 1 && dnaCheck(y) == false) {
+					handleError(inputNames[i], "dna");
+					errorsFound = true;
+				}
+
+				// Failed Protien Change: Protien change was not in the format p.Cys64Gly
+				else if (i == 2 && protienCheck(y) == false) {
+					handleError(inputNames[i], "protien");
+					errorsFound = true;
+				}
+		
+				// Failed Special Character: Value contained special charaters
+				else if (specialCheck(y) == false) {
+					handleError(inputNames[i], "special");
+					errorsFound = true;
+				}
+			}
+			
+		}
 	}
 
+	// Reveal label if error
 	if (errorsFound) {
 		pageError.style.display = "block";
 		
-	} else {
+	} 
+	
+	// otherwise continue
+	else {
 		pageError.style.display = "none";
 		nextPage()
 		displayUserInputs(userInputs)
-
 	}
 	
-}
-let inputPage = document.getElementById("inputPage")
-let resultsPage = document.getElementById("resultsPage")
-let backButton = document.getElementById("backButton")
-let nextButton = document.getElementById("nextButton")
-
-function nextPage() {
-	inputPage.style.display = "none"
-	resultsPage.style.display = "flex"
-
-	backButton.style.display = "flex"
-	
-	nextButton.style.display = "none"
-	
-	createDownloadButton()
-}
-
-function back(){
-	inputPage.style.display = "flex"
-	resultsPage.style.display = "none"
-
-	nextButton.style.display = "flex"
-	backButton.style.display = "none"
-	
-	deleteDownloadButton()
-}
-
-
-
-function createDownloadButton() {
-	let container = document.getElementById("button-container")
-	
-	let button = document.createElement("div");
-	button.className = "button download";
-	button.id = "downloadButton";
-	button.innerText = "Download"
-
-	container.appendChild(button)
-}
-
-function deleteDownloadButton() {
-	document.getElementById("downloadButton").remove()
 }
 
 
