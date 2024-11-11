@@ -90,6 +90,7 @@ body{
 #resultsPage{
 	display:none;
 	flex-direction: column;
+	margin-bottom:30px;
 }
 
 #resultsPage p {
