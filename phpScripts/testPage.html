@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="stylesheets/style.css">
+
+	<!-- Pretty font import -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+	<title>CSCI 495</title>
+</head>
+<body>
+
+<form action="./search.php" method="GET">
+	<label id="geneLabel" for="gene_name">Gene Name</label>
+	<input type="text" name="gene_name" id="gene_name"><br>
+
+        <label id="classLabel" for="classification">Classification</label>
+        <input type="text" name="classification" id="classification"> <br>
+
+        <label id="dnaLabel" for="dna_change">DNA Change</label>
+        <input type="text" name="dna_change" id="dna_change"> <br>
+
+        <label id="labLabel" for="lab">Lab</label>
+        <input type="text" name="lab" id="lab"> <br>
+
+        <label id="proteinLabel" for="protein_change">Protein Change</label>
+        <input type="text" name="protein_change" id="protein_change"> <br>
+
+        <label id="yearLabel" for="year">Gene Name</label>
+        <input type="text" name="year" id="year"> <br>
+
+	<input type="submit" name="submit">
+</form>
+
+<a href="./downloadFiles.php"><button>Run Script</button></a>
+
+</body>
+</html>
