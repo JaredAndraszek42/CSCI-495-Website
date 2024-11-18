@@ -147,7 +147,7 @@ function emptyCheck(string) {
 }
 
 function specialCheck(string) {
-	const specialCharRegex = /[~`!@#$%^&*()_\-+=|\\}\]{\["':;?/><,]/;
+	const specialCharRegex = /[~`!@#$%^&*()\-+=|\\}\]{\["':;?/><,]/;
 	if (!specialCharRegex.test(string)) {
 		return true;
 	}
