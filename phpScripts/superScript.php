@@ -3,7 +3,7 @@
 $host = 'localhost';
 $dbname = 'backend_db';
 $dbusername = 'root';
-$dbpassword = 'blue2024';
+$dbpassword = 'kali';
 
 // File config
 $fileURL = "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/submission_summary.txt.gz";
@@ -43,6 +43,8 @@ try {
     fclose($output);
     echo "Extraction complete.\n";
 
+    // TODO: Check if the table exists and TRUNCATE TABLES if so //
+    
     // Step 3: Create SQL table
     echo "Creating SQL table...\n";
 
@@ -88,7 +90,7 @@ try {
         $data = array_map('trim', explode("\t", $line));
         $stmt->execute($data);
     }
-    pdo->commit();
+    $pdo->commit();
     fclose($fileHandle);
     echo "Data import completed successfully.\n";
 
