@@ -44,7 +44,14 @@ try {
     fclose($output);
     echo "Extraction complete.\n";
 */
-    // TODO; ADD CHECK TO DROP TABLE IF EXISTS //
+    // Remove first couple lines //
+    echo "Removing the first 17 lines...\n";
+    shell_exec('sed -i 1,17d submission_summary.txt');
+
+    // Remove first character //
+    echo "Removing the first character...\n";
+    shell_exec("sed '1s/^.//' submission_summary.txt > submission_summar>
+    $extractedFile = "submission_summary2.txt";
 
     // Step 3: Create SQL table
     echo "Creating SQL table...\n";
