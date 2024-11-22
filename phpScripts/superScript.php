@@ -43,7 +43,15 @@ try {
     fclose($output);
     echo "Extraction complete.\n";
 
-    // TODO: Check if the table exists and TRUNCATE TABLES if so //
+    // Remove first couple lines //
+    echo "Removing the first 17 lines...\n";
+    shell_exec('sed -i 1,17d submission_summary.txt');
+
+    // Remove first character //
+    echo "Removing the first character...\n";
+    shell_exec("sed '1s/^.//' submission_summary.txt > submission_summar>
+    $extractedFile = "submission_summary2.txt";
+
     
     // Step 3: Create SQL table
     echo "Creating SQL table...\n";
@@ -62,6 +70,7 @@ try {
 
     $tableName = 'Submission_Summary';
     $createTableSQL = "CREATE TABLE IF NOT EXISTS `$tableName` (" . implode(',', $columns) . ");";
+    $truncTableSQL = "TRUNCATE TABLE `$tableName`";
 
     // Connect to the database
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
@@ -69,6 +78,7 @@ try {
 
     // Execute table creation query
     $pdo->exec($createTableSQL);
+    $pdo->exec($truncTableSQL);
     echo "Table `$tableName` created successfully.\n";
 
     // Step 4: Import the data into the table
