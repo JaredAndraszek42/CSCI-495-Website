@@ -49,7 +49,7 @@ try {
 
     // Remove first character //
     echo "Removing the first character...\n";
-    shell_exec("sed '1s/^.//' submission_summary.txt > submission_summar>
+    shell_exec("sed '1s/^.//' submission_summary.txt > submission_summar)
     $extractedFile = "submission_summary2.txt";
 
     
