@@ -1,14 +1,18 @@
 <?php
+$host = 'localhost';
+$dbname = 'backend_db';
+$dbusername = 'root';
+$dbpassword = 'kali';
+
 echo "<h1> Testing Search </h1>";
 
 // Testing the query based on GET inputs -- will change to POST for final implementation //
-
 $query = "SELECT * FROM table WHERE ";
 $hasMultiple = false;
 
 if (isset($_GET['gene_name'])) {
     $gene_name = $_GET['gene_name'];
-    $query = $query . "gene_name='" . $gene_name . "'";
+    $query = $query . "SubmittedGeneSymbol LIKE '%" . $gene_name . "%'";
     $hasMultiple = true;
 }
 
@@ -19,7 +23,7 @@ if (isset($_GET['classification'])) {
         $query = $query . " AND ";
     }
 
-    $query = $query . "classification='" . $classification . "'";
+    $query = $query . "ClinicalSignificance LIKE '%" . $classification . "%'";
     $hasMultiple = true;
 }
 
@@ -30,7 +34,7 @@ if (isset($_GET['dna_change'])) {
         $query = $query . " AND ";
     }
 
-    $query = $query . "dna_change='" . $dna_change . "'";
+    $query = $query . "decsription LIKE '%c." . $dna_change . "%'";
     $hasMultiple = true;
 }
 
@@ -41,7 +45,7 @@ if (isset($_GET['lab'])) {
         $query = $query . " AND ";
     }
 
-    $query = $query . "lab='" . $lab . "'";
+    $query = $query . "submitter LIKE '%" . $lab . "%'";
     $hasMultiple = true;
 }
 
@@ -52,7 +56,7 @@ if (isset($_GET['protein_change'])) {
         $query = $query . " AND ";
     }
 
-    $query = $query . "protien_change='" . $protein_change . "'";
+    $query = $query . "protien_change LIKE '%" . $protein_change . "%'";
     $hasMultiple = true;
 }
 
@@ -63,10 +67,17 @@ if (isset($_GET['year'])) {
         $query = $query . " AND ";
     }
 
-    $query = $query . "year='" . $year . "'";
+    $query = $query . "DateLastEvaluated LIKE '%" . $year . "%'";
 }
 
 $query = $query . ";";
 
 echo "Query is: $query <br>";
+
+
+
+
+
+
+
 ?>
