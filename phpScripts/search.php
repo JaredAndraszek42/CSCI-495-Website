@@ -74,10 +74,36 @@ $query = $query . ";";
 
 echo "Query is: $query <br>";
 
+$conn = new mysqli($servername, $username, $password, $dbname);
 
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
+$result = $conn->query($query);
 
+if ($result->num_rows > 0) {
+    // Open a file pointer for output (php://output writes directly to the browser)
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment;filename="export.csv"');
+    $output = fopen('php://output', 'w');
 
+    // Output the column headers (optional, depending on your needs)
+    $first_row = $result->fetch_assoc(); // Get the first row
+    fputcsv($output, array_keys($first_row)); // Write column headers to CSV
 
+    // Write the data to the CSV file
+    mysqli_data_seek($result, 0); // Reset result pointer to the first row
+    while ($row = $result->fetch_assoc()) {
+        fputcsv($output, $row); // Write each row to the CSV
+    }
+
+    // Close the file pointer (optional for php://output)
+    fclose($output);
+} else {
+    echo "No results found";
+}
+
+$conn->close();
 
 ?>
