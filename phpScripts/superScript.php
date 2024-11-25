@@ -2,8 +2,8 @@
 // Database configuration
 $host = 'localhost';
 $dbname = 'backend_db';
-$dbusername = 'root';
-$dbpassword = 'kali';
+$dbusername = 'app_user';
+$dbpassword = 'Blue2024';
 
 // File config
 $fileURL = "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/submission_summary.txt.gz";
@@ -71,15 +71,15 @@ try {
 
     $tableName = 'Submission_Summary';
     $createTableSQL = "CREATE TABLE IF NOT EXISTS `$tableName` (" . implode(',', $columns) . ");";
-    $truncTableSQL = "TRUNCATE TABLE `$tableName`";
+    // $truncTableSQL = "TRUNCATE TABLE `$tableName`";
 
     // Connect to the database
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $dbusername, $dbpassword);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Execute table creation query
     $pdo->exec($createTableSQL);
-    $pdo->exec($truncTableSQL);
+    // $pdo->exec($truncTableSQL);
     echo "Table `$tableName` created successfully.\n";
 
     // Step 4: Import the data into the table
