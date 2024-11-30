@@ -344,3 +344,7 @@ p {
     align-items: center;
 	margin: 40px 0px 40px 0px;
 }
+
+#downloadButton {
+	display: none;
+}

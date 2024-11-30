@@ -32,7 +32,8 @@ function nextPage() {
 	
 	nextButton.style.display = "none"
 	
-	createDownloadButton()
+	// createDownloadButton()
+	showDownloadButton()
 }
 
 function back(){
@@ -42,7 +43,8 @@ function back(){
 	nextButton.style.display = "flex"
 	backButton.style.display = "none"
 	
-	deleteDownloadButton()
+	// deleteDownloadButton()
+	hideDownloadButton()
 }
 
 
@@ -60,4 +62,19 @@ function createDownloadButton() {
 
 function deleteDownloadButton() {
 	document.getElementById("downloadButton").remove()
+}
+
+
+function showDownloadButton() {
+	let x = document.getElementById("downloadButton")
+
+	x.style.display = 'block';
+	
+}
+
+function hideDownloadButton() {
+	let x = document.getElementById("downloadButton")
+	
+	x.style.display = 'none';
+	
 }
