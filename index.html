@@ -42,7 +42,7 @@
 		</p>
 
 		<!-- Text Input Fields Container -->
-		<form id="downloadForm" method="POST" action="/phpScripts/downloadFiles.php">
+		<form ... onkeydown="return event.key != 'Enter';" id="downloadForm" method="POST" action="/phpScripts/downloadFiles.php" >
 		<div class="inputs" id="inputPage">
 			<div class="column">
 
@@ -129,6 +129,11 @@
 		</form>
 	</div>
 </body>
+<script>
+
+
+
+</script>
 <script src="scripts/htmlBuilder.js"></script>
 <script src="scripts/script.js"></script>
 </html>
