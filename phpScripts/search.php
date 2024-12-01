@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $host = 'localhost';
 $dbname = 'backend_db';
 $dbusername = 'app_user';
@@ -8,36 +10,36 @@ $dbpassword = 'Blue2024';
 $query = "SELECT * FROM Submission_Summary WHERE ";
 $hasMultiple = false;
 
-if (isset($_GET['gene_name']) && ($_GET['gene_name'] != "")) {
-    $gene_name = $_GET['gene_name'];
-    $query .= "SubmittedGeneSymbol LIKE '%" . $gene_name . "%'";
+if (isset($_POST['gene']) && ($_POST['gene'] != "")) {
+    $gene = $_POST['gene'];
+    $query .= "SubmittedGeneSymbol LIKE '%" . $gene . "%'";
     $hasMultiple = true;
 }
 
-if (isset($_GET['classification']) && ($_GET['classification'] != "")) {
-    $classification = $_GET['classification'];
+if (isset($_POST['classific']) && ($_POST['classific'] != "")) {
+    $classific = $_POST['classific'];
 
     if ($hasMultiple) {
         $query .= " AND ";
     }
 
-    $query .= "ClinicalSignificance LIKE '%" . $classification . "%'";
+    $query .= "ClinicalSignificance LIKE '%" . $classific . "%'";
     $hasMultiple = true;
 }
 
-if (isset($_GET['dna_change']) && ($_GET['dna_change'] != "")) {
-    $dna_change = $_GET['dna_change'];
+if (isset($_POST['dna']) && ($_POST['dna'] != "")) {
+    $dna = $_POST['dna'];
 
     if ($hasMultiple) {
         $query .= " AND ";
     }
 
-    $query .= "Description LIKE '%c." . $dna_change . "%'";
+    $query .= "Description LIKE '%c." . $dna . "%'";
     $hasMultiple = true;
 }
 
-if (isset($_GET['lab'])) {
-    $lab = $_GET['lab'];
+if (isset($_POST['lab'])) {
+    $lab = $_POST['lab'];
 
     if ($hasMultiple) {
         $query .= " AND ";
@@ -47,19 +49,19 @@ if (isset($_GET['lab'])) {
     $hasMultiple = true;
 }
 
-if (isset($_GET['protein_change']) && ($_GET['protein_change'] != "")) {
-    $protein_change = $_GET['protein_change'];
+if (isset($_POST['protein']) && ($_POST['protein'] != "")) {
+    $protein = $_POST['protein'];
 
     if ($hasMultiple) {
         $query .= " AND ";
     }
 
-    $query .= "Description LIKE '%" . $protein_change . "%'";
+    $query .= "Description LIKE '%" . $protein . "%'";
     $hasMultiple = true;
 }
 
-if (isset($_GET['year']) && ($_GET['year'] != "")) {
-    $year = $_GET['year'];
+if (isset($_POST['year']) && ($_POST['year'] != "")) {
+    $year = $_POST['year'];
 
     if ($hasMultiple) {
         $query .= " AND ";
@@ -98,9 +100,16 @@ if ($result->num_rows > 0) {
 
     // Close the file pointer (optional for php://output)
     fclose($output);
+
+    $time = time();
+//    setcookie("download_complete", "true", time() + 300, "/", "", true, true);
+    setcookie("download_complete", "true", false, "/");
+//    $_SESSION['download_complete'] = true;
+
 } else {
     echo "No results found";
 }
 
 $conn->close();
+exit();
 ?>
