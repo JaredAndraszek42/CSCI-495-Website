@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+$_SESSION["download_complete"] = false;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +18,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-	<title>Genetic Data Extractor</title>
+	<title>CSCI 495</title>
 </head>
 <body>
 	
@@ -26,9 +32,8 @@
 
 		<!-- Right-hand side: Links -->
 		<div class="right">
-			<a class="active" href="index.html">Tool</a>
+			<a class="active" href="">Tool</a>
 			<!-- <a href="">User Guide</a> -->
-			<!-- <a href="./phpScripts/testPage.html">Test</a> -->
 		</div>
 
 	</div>
@@ -127,39 +132,28 @@
 			<div class="button pageButton" id="backButton" onclick="back()">Back</div>
 			<div class="button pageButton" id="nextButton" onclick="validateAllInput()">Next</div>
 			<!-- Download Button-->
-			<button id="downloadButton" onclick="loading()" class="download" form="downloadForm">Download</button>
+			<button id="downloadButton" class="download" onclick="loading()" form="downloadForm">Download</button>
 
 		</div>
 		<p class="error pageError" id="pageError">Please enter valid information before proceeding</p>
 
 		</form>
 	</div>
-
-	<footer>
-		<div class="footer-content">
-
-			<p class="footer-text">
-				CSCI 495 - Systems Analysis & Design
-				<br>
-				<br>
-				Blue Team
-			</p>
-		</div>
-	</footer>
 </body>
+<script>
+let intervalId = null;
+const button = document.getElementById('downloadButton');
+
+button.addEventListener('click', () => {
+    // If auto-click is not already running, start it
+    if (!intervalId) {
+       intervalId = setInterval(() => {
+           button.click(); // Programmatically trigger a button click
+       }, 1000); // 1-second interval
+    }
+});
+
+</script>
 <script src="scripts/htmlBuilder.js"></script>
 <script src="scripts/script.js"></script>
-<script>
-    document.getElementById('downloadButton').addEventListener('click', function (e) {
-        // Start a check for the cookie after clicking download
-        const checkDownloadComplete = setInterval(() => {
-            // Check for the download completion cookie
-            if (document.cookie.includes("download_complete=true")) {
-                clearInterval(checkDownloadComplete); // Stop checking
-                document.cookie = "download_complete=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Clear the cookie
-                window.location.href = "success.html"; // Redirect to success page
-            }
-        }, 500); // Check every 500ms
-    });
-</script>
 </html>
