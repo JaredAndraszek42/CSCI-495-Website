@@ -30,7 +30,7 @@ body{
 
 	/* Spacing */
 	display:flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	padding: 30px 0px 30px 0px;
 	align-items:center;
 
