@@ -71,7 +71,7 @@ try {
 
     $tableName = 'Submission_Summary';
     $createTableSQL = "CREATE TABLE IF NOT EXISTS `$tableName` (" . implode(',', $columns) . ");";
-    // $truncTableSQL = "TRUNCATE TABLE `$tableName`";
+    $truncTableSQL = "TRUNCATE TABLE `$tableName`";
 
     // Connect to the database
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $dbusername, $dbpassword);
@@ -79,7 +79,7 @@ try {
 
     // Execute table creation query
     $pdo->exec($createTableSQL);
-    // $pdo->exec($truncTableSQL);
+    $pdo->exec($truncTableSQL);
     echo "Table `$tableName` created successfully.\n";
 
     // Step 4: Import the data into the table
