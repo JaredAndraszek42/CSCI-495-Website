@@ -6,9 +6,9 @@ $dbusername = 'app_user';
 $dbpassword = 'Blue2024';
 
 // File config
-$fileURL = "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/submission_summary.txt.gz";
-$localGzFile = 'submission_summary.gz';
-$extractedFile = 'submission_summary.txt';
+$fileURL = "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/variant_summary.txt.gz";
+$localGzFile = 'variant_summary.txt.gz';
+$extractedFile = 'variant_summary.txt';
 
 try {
     // Step 1: Download the file
@@ -43,17 +43,12 @@ try {
     fclose($output);
     echo "Extraction complete.\n";
 
-    // Remove first couple lines //
-    echo "Removing the first 17 lines...\n";
-    shell_exec('sed -i 1,17d submission_summary.txt');
-
     // Remove first character //
     echo "Removing the first character...\n";
-    shell_exec("sed '1s/^.//' submission_summary.txt > submission_summary2.txt");
-    shell_exec("rm submission_summary.txt");
-    $extractedFile = "submission_summary2.txt";
+    shell_exec("sed '1s/^.//' variant_summary.txt > variant_summary2.txt");
+    shell_exec("rm variant_summary.txt");
+    $extractedFile = "variant_summary2.txt";
 
-    
     // Step 3: Create SQL table
     echo "Creating SQL table...\n";
 
@@ -69,9 +64,9 @@ try {
          return "`" . trim($col) . "` TEXT";
     }, explode("\t", $headerLine));
 
-    $tableName = 'Submission_Summary';
+    $tableName = 'variant_summary';
     $createTableSQL = "CREATE TABLE IF NOT EXISTS `$tableName` (" . implode(',', $columns) . ");";
-    // $truncTableSQL = "TRUNCATE TABLE `$tableName`";
+    $truncTableSQL = "TRUNCATE TABLE `$tableName`";
 
     // Connect to the database
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $dbusername, $dbpassword);
@@ -79,7 +74,8 @@ try {
 
     // Execute table creation query
     $pdo->exec($createTableSQL);
-    // $pdo->exec($truncTableSQL);
+    $pdo->exec($truncTableSQL);
+
     echo "Table `$tableName` created successfully.\n";
 
     // Step 4: Import the data into the table

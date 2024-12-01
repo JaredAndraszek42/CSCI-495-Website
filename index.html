@@ -44,7 +44,7 @@
 		</p>
 
 		<!-- Text Input Fields Container -->
-		<form ... onkeydown="return event.key != 'Enter';" id="downloadForm" method="POST" action="/phpScripts/downloadFiles.php" >
+		<form ... onkeydown="return event.key != 'Enter';" id="downloadForm" method="POST" action="/phpScripts/search.php" >
 		<div class="inputs" id="inputPage">
 			<div class="column">
 
@@ -149,4 +149,17 @@
 </body>
 <script src="scripts/htmlBuilder.js"></script>
 <script src="scripts/script.js"></script>
+<script>
+    document.getElementById('downloadButton').addEventListener('click', function (e) {
+        // Start a check for the cookie after clicking download
+        const checkDownloadComplete = setInterval(() => {
+            // Check for the download completion cookie
+            if (document.cookie.includes("download_complete=true")) {
+                clearInterval(checkDownloadComplete); // Stop checking
+                document.cookie = "download_complete=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Clear the cookie
+                window.location.href = "success.html"; // Redirect to success page
+            }
+        }, 500); // Check every 500ms
+    });
+</script>
 </html>
