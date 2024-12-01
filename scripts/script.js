@@ -267,6 +267,6 @@ function validateAllInput() {
 
 
 function loading() {
-	// const loadingOverlay = document.getElementById('loading-overlay');
-    // loadingOverlay.style.display = 'flex';
+	const loadingOverlay = document.getElementById('loading-overlay');
+    loadingOverlay.style.display = 'flex';
 }
