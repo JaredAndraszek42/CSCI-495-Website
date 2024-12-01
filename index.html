@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="stylesheets/style.css">
 	<link rel="stylesheet" href="stylesheets/footer.css">
+	<link rel="stylesheet" href="stylesheets/loading.css">k
 
 	<!-- Pretty font import -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -118,11 +119,15 @@
 
 		</div>
 
+		<div id="loading-overlay" class="loading-overlay">
+			<div class="spinner"></div>
+		</div>
+
 		<div id="button-container">
 			<div class="button pageButton" id="backButton" onclick="back()">Back</div>
 			<div class="button pageButton" id="nextButton" onclick="validateAllInput()">Next</div>
 			<!-- Download Button-->
-			<button id="downloadButton" class="download" form="downloadForm">Download</button>
+			<button id="downloadButton" onclick="loading()" class="download" form="downloadForm">Download</button>
 
 		</div>
 		<p class="error pageError" id="pageError">Please enter valid information before proceeding</p>
