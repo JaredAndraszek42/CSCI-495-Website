@@ -196,10 +196,11 @@ input[type=checkbox] {
 
 	background-color: white;
 	width: max-content;
-	height: 100%;
 
 	/* Spacing */
-	padding: 40px 30px 120px 30px;
+	padding: 40px 30px 40px 30px;
+
+	margin: 0px 0px 40px 0px;
 }
 
 p {

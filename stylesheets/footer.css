@@ -1,0 +1,43 @@
+footer {
+    background-color: #164360; /* Dark background for the footer */
+    padding: 20px 0; /* Top and bottom padding */
+    font-size: 14px;
+    width: 100%;
+
+	color: white;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align the content */
+    justify-content: center;
+    text-align: center; /* Center text */
+}
+
+.footer-text {
+    margin-bottom: 20px; /* Space between the text and the navigation */
+    font-size: 16px;
+    color:#97b7ca;
+}
+
+.footer-nav ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+}
+
+.footer-nav ul li {
+    display: inline-block;
+    margin: 0 15px; /* Space between links */
+}
+
+.footer-nav ul li a {
+    text-decoration: none; /* Remove underline from links */
+    font-size: 14px;
+    transition: color 0.3s; /* Smooth color transition on hover */
+    color:#97b7ca;
+}
+
+.footer-nav ul li a:hover {
+    color: #97b7ca; /* Change color on hover */
+}
