@@ -5,7 +5,7 @@ require 'config.php';
 
 // Handle CSV download first
 if (!isset($_SESSION['download_complete']) || $_SESSION['download_complete'] == false) {
-    $query = "SELECT * FROM Submission_Summary WHERE 1=1"; // Base query
+    $query = "SELECT * FROM demo_table WHERE 1=1"; // Base query
 
     // Add conditions based on POST data
     if (!empty($_POST['gene'])) {
